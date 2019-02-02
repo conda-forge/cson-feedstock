@@ -1,15 +1,41 @@
 {% set name = "cson" %}
-{% set version = "0.7" %}
-{% set sha256 = "c923819ea207e10fd7e58de2920fa621af04be67c307fc2efa36402b253e33a0" %}
+{% set version = "0.8" %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
 
 source:
-  fn: {{ name }}-{{ version }}.zip
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: ee8c0166fcd1f51789887197e3e8354ac7befa396fc29706bceb5af25edc9e01
+
+build:
+  noarch: python
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+  run:
+    - python
+    - speg
+
+test:
+  imports:
+    - cson
+
+about:
+  home: https://github.com/avakar/pycson
+  license: MIT
+  license_family: MIT
+  summary: 'A Coffescript Object Notation (CSON) parser for Python 2 and Python 3.'
+
+extra:
+  recipe-maintainers:
+    - dfroger
 
 build:
   noarch: python
