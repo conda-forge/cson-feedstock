@@ -33,10 +33,6 @@ about:
   license_family: MIT
   summary: 'A Coffescript Object Notation (CSON) parser for Python 2 and Python 3.'
 
-extra:
-  recipe-maintainers:
-    - dfroger
-
 build:
   noarch: python
   number: 1
